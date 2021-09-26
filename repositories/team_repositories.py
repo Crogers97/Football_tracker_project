@@ -20,6 +20,16 @@ def select_all():
         teams.append(team)
     return teams
 
+def select(id):
+    team = None
+    sql = "SELECT * FROM teams WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values) [0]
+
+    if result is not None:
+        team = Team(result['name'], result['points'], result['id'])
+    return team
+
 def update(team):
     sql = "UPDATE teams SET (name, points) = (%s, %s) WHERE id = %s"
     values = [team.name, team.points, team.id]
