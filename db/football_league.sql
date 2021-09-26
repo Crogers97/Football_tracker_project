@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS fixture;
+DROP TABLE IF EXISTS fixtures;
 DROP TABLE IF EXISTS teams;
 
 CREATE TABLE teams (
@@ -7,9 +7,10 @@ CREATE TABLE teams (
     points INT
 );
 
-CREATE TABLE fixture (
+CREATE TABLE fixtures (
     id SERIAL PRIMARY KEY,
     home_team VARCHAR(255),
     away_team VARCHAR(255),
-    result INT
+    score VARCHAR(255),
+    result VARCHAR(255)
 );

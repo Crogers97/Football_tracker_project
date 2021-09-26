@@ -20,3 +20,17 @@ def select_all():
         teams.append(team)
     return teams
 
+def update(team):
+    sql = "UPDATE teams SET (name, points) = (%s, %s) WHERE id = %s"
+    values = [team.name, team.points, team.id]
+    run_sql(sql, values)
+
+def delete_all():
+    sql = "DELETE FROM teams"
+    run_sql(sql)
+
+def delete(id):
+    sql = "DELETE FROM teams WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+

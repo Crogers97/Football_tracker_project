@@ -1,7 +1,8 @@
 import pdb
 from models.team import Team
-
+from models.fixture import Fixture
 import repositories.team_repositories as team_repository 
+import repositories.fixture_repositories as fixture_repositories 
 
 team1= Team("Aberdeen", 1)
 team_repository.save(team1)
@@ -29,6 +30,16 @@ team12= Team("St Mirren", 12)
 team_repository.save(team12)
 
 team_repository.select_all()
+
+fixture1= Fixture("Celtic", "Rangers","2-0","H Win")
+fixture_repositories.save(fixture1)
+fixture2= Fixture("Hearts","Hibs","0-2", "A Win")
+fixture_repositories.save(fixture2)
+fixture3= Fixture("St Johnstone", "St Mirren","0-0", "Draw")
+fixture_repositories.save(fixture3)
+
+fixture_repositories.select_all()
+
 
 pdb.set_trace()
 

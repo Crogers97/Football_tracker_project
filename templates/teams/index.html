@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for team in all_teams %}
+<div class="task">
+    <div class="name">
+        {{team.name}}
+
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
