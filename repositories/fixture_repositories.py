@@ -1,7 +1,7 @@
 
 from db.run_sql import run_sql
 from models.fixture import Fixture
-
+import repositories.team_repositories as team_repositories
 def save(fixture):
     sql = "INSERT INTO fixtures ( home_team_id, away_team_id, score, result) VALUES (%s, %s, %s, %s) RETURNING *"
     values= [fixture.home_team.id, fixture.away_team.id, fixture.score, fixture.result]

@@ -6,13 +6,24 @@ from models.team import Team
 from models.fixture import Fixture
 from repositories import team_repositories
 from repositories import fixture_repositories
+import pdb
 
 fixture_blueprint = Blueprint("fixtures", __name__)
 
-@fixture_blueprint.route("/teams/<id>/fixtures/")
-def fixtures():
+@fixture_blueprint.route("/teams/fixtures/<id>")
+def fixtures(id):
     fixtures = fixture_repositories.select_all()
-    return render_template("fixtures/index.html", fixtures = fixtures)
+    # pdb.set_trace()
+    fixtures_for_team = []
+    for fixture in fixtures:
+        if fixture.home_team == int(id) or fixture.away_team == int(id):
+            data = {}
+            data['fixture'] = fixture
+            data['home_team_name'] = team_repositories.select(fixture.home_team).name
+            data['away_team_name'] = team_repositories.select(fixture.away_team).name
+            fixtures_for_team.append(data)
+
+    return render_template("fixtures/index.html", fixtures = fixtures_for_team)
 
 #New Fixture
 #GET '/teams/new_fixture'

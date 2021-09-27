@@ -31,9 +31,9 @@ team_repository.save(team12)
 
 team_repository.select_all()
 
-fixture1= Fixture(team1, team2,"2-0","H Win")
+fixture1= Fixture(team2, team1,"2-0","Home Win")
 fixture_repositories.save(fixture1)
-fixture2= Fixture(team9,team11,"0-2", "A Win")
+fixture2= Fixture(team9,team11,"0-2", "Away Win")
 fixture_repositories.save(fixture2)
 fixture3= Fixture(team8, team5,"0-0", "Draw")
 fixture_repositories.save(fixture3)
