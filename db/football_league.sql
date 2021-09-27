@@ -9,8 +9,8 @@ CREATE TABLE teams (
 
 CREATE TABLE fixtures (
     id SERIAL PRIMARY KEY,
-    home_team VARCHAR(255),
-    away_team VARCHAR(255),
+    home_team_id INT REFERENCES teams(id) ON DELETE CASCADE,
+    away_team_id INT REFERENCES teams(id) ON DELETE CASCADE,
     score VARCHAR(255),
     result VARCHAR(255)
 );
