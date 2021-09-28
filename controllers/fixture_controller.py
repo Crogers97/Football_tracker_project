@@ -47,3 +47,21 @@ def create_fixture():
     fixture_repositories.save(fixture)
     return redirect('/teams/<id>/fixtures')
 
+#UPDATE
+#PUT 'teams/<id>'
+@fixture_blueprint.route("/teams/new_fixture", methods=['POST'])
+def update_fixture(id):
+    home_team= request.form['home_team']
+    away_team = request.form['away_team']
+    score = request.form['score']
+    result = request.form['request']
+    fixture = Fixture(home_team, away_team, score, result)
+    fixture_repositories.update(fixture)
+    return redirect('/teams/<id>/fixtures')
+
+
+
+
+
+
+

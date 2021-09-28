@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="/teams/new_fixture" method="post">
+<form action="/fixtures" method="post">
     <div>
-        <label for= "home_team_id">Home Team Name</label>
-        <input type="text" id="home_team_id" name="home_team_id" placeholder="home_team_id">
+        <label for= "home_team">Home Team Name</label>
+        <input type="text" id="home_team_id" name="home_team_id" placeholder="home_team">
     </div>
     <div>
         <label for= "away_team_id">Away Team Name</label>
-        <input type="text" id="away_team_id" name="away_team_id" placeholder="away_team_id">
+        <input type="text" id="away_team_id" name="away_team_id" placeholder="away_team">
     </div>
 
     <div>
