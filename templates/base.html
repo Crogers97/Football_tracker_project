@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,9 +12,9 @@
   <header>
       <nav>
           <ul class= "menu">
-              <li><a href="/">Home</a></li>
-              <li><a href="/teams">Teams</a></li>
-              <li><a href="/teams/new_team">New Team</a></li>
+              <li><mark><a href="/">Home</a></mark></li>
+              <li><mark><a href="/teams">Teams</a></mark></li>
+              <li><mark><a href="/teams/new_team">New Team</a></mark></li>
           </ul>
       </nav>
   </header>

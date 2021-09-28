@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+
+
 {% for team in all_teams %}
 <div class="teams">
     <div class="name">
@@ -11,12 +13,16 @@
 
         <div class="buttons">
             <form class="delete-form" action="/teams/{{team.id}}/delete" method="POST">
-            <button class="delete"></button>
+            <button class="delete">X</button>
             </div>
         </form>
             
+        
 
     
 
 {% endfor %}
+<div class="img_centre"> 
+    <img src="static/images/logo.jpeg" width="300" >
+    </div>
 {% endblock %}

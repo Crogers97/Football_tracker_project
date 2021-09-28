@@ -4,8 +4,8 @@ from flask.wrappers import Request
 from werkzeug.utils import redirect
 from models.team import Team
 from models.fixture import Fixture
-from repositories import team_repositories
-from repositories import fixture_repositories
+import repositories.team_repositories as team_repositories
+import repositories.fixture_repositories as fixture_repositories
 import pdb
 
 fixture_blueprint = Blueprint("fixtures", __name__)
@@ -31,7 +31,8 @@ def fixtures(id):
 @fixture_blueprint.route("/teams/new_fixture", methods = ['GET'])
 def new_fixture():
     fixtures = fixture_repositories.select_all()
-    return render_template("fixtures/new_fixture.html", all_fixtures = fixtures)
+    teams = team_repositories.select_all()
+    return render_template("fixtures/new_fixture.html", all_fixtures = fixtures, all_teams= teams)
 
 #Create a new Fixture
 #POST '/teams/<id>/fixtures'
@@ -39,25 +40,29 @@ def new_fixture():
 
 @fixture_blueprint.route("/teams/new_fixture", methods=['POST'])
 def create_fixture():
-    home_team= request.form['home_team']
-    away_team = request.form['away_team']
+    home_team_id= request.form['home_team_id']
+    away_team_id = request.form['away_team_id']
     score = request.form['score']
-    result = request.form['request']
+    result = request.form['result']
+    home_team = team_repositories.select(int(home_team_id))
+    away_team = team_repositories.select(int(away_team_id))
     fixture = Fixture(home_team, away_team, score, result)
     fixture_repositories.save(fixture)
-    return redirect('/teams/<id>/fixtures')
+    return redirect('/teams/fixtures/'+ str(home_team.id))
 
 #UPDATE
-#PUT 'teams/<id>'
-@fixture_blueprint.route("/teams/new_fixture", methods=['POST'])
+#PUT 'teams/<id>/fixtures'
+@fixture_blueprint.route("/teams/new_fixture/<id>", methods=['POST'])
 def update_fixture(id):
-    home_team= request.form['home_team']
-    away_team = request.form['away_team']
+    home_team_id= request.form['home_team_id']
+    away_team_id = request.form['away_team_id']
     score = request.form['score']
-    result = request.form['request']
+    result = request.form['result']
+    home_team = team_repositories.select(home_team_id)
+    away_team = team_repositories.select(away_team_id)
     fixture = Fixture(home_team, away_team, score, result)
     fixture_repositories.update(fixture)
-    return redirect('/teams/<id>/fixtures')
+    return redirect('/teams/fixtures/'+ home_team.id)
 
 
 

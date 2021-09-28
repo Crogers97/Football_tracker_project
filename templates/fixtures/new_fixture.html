@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="/fixtures" method="post">
+<form action="/teams/new_fixture" method="post">
     <div>
-        <label for= "home_team">Home Team Name</label>
-        <input type="text" id="home_team_id" name="home_team_id" placeholder="home_team">
+        <label for="home_team_id">Home Team:</label>
+        <select id="home_team_id" name="home_team_id">
+            {% for team in all_teams %}
+                <option value="{{ team.id }}">{{team.name}}</option>
+            {% endfor %}
+        </select>
     </div>
     <div>
-        <label for= "away_team_id">Away Team Name</label>
-        <input type="text" id="away_team_id" name="away_team_id" placeholder="away_team">
+        <label for="away_team_id">Away Team:</label>
+        <select id="away_team_id" name="away_team_id">
+            {% for team in all_teams %}
+                <option value="{{ team.id }}">{{team.name}}</option>
+            {% endfor %}
+        </select>
     </div>
 
     <div>
