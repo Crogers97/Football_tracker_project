@@ -1,7 +1,7 @@
 # Football_tracker_project
 running instructions:
 
-clone repo and pull it to directory.
+clone repo and pull it.
 open file in vscode and run flask 
 connect to local5000/
 enjoy!
